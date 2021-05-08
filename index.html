@@ -2,78 +2,32 @@
 <html>
     <head>
         <title>Odin: Rock, paper, scissors</title>
+        <link href="style.css" type="text/css" rel="stylesheet">
     </head>
     <body>
-        <script>
-            function computerPlay(){
-                let nrandom = Math.floor(Math.random()*3);
-                let chosenHand;
-                if (nrandom == 0){
-                    chosenHand = 'rock';
-                } else if (nrandom == 1){
-                    chosenHand = 'paper';
-                } else {
-                    chosenHand = 'scissors';
-                }
-                return chosenHand;
-            }
-            function round(playerSelection, computerSelection){
-                playerSelection = playerSelection.toLowerCase();
-                let message;
-                if (playerSelection == computerSelection){
-                    message = "tie!";
-                } else if (playerSelection == 'rock'){
-                    if (computerSelection == 'scissors'){
-                        message = "player";
-                    } else {
-                        message = "computer";
-                    }
-                } else if (playerSelection == 'scissors'){
-                    if (computerSelection == 'rock'){
-                        message = "computer";
-                    } else {
-                        message = "player";
-                    }
-                } else {
-                    if (computerSelection == 'rock'){
-                        message = "player";
-                    } else {
-                        message = "computer";
-                    }
-                }
-                return message;
-            }
-            function game(){
-                let contPlayer = 0;
-                let contComputer = 0;
-                let playerInput;
-                let computerInput;
-                let result;
-                for (let i = 1; i <= 5; i++){
-                    playerInput = window.prompt("what's your hand?");
-                    computerInput = computerPlay();
-                    console.log("Your hand: " + playerInput);
-                    console.log("PCs hand: " + computerInput);
-                    result = round(playerInput, computerInput);
-                    if (result == 'tie'){
-                        console.log(`Round ${i} is a tie!`);
-                    } else if(result == 'player'){
-                        console.log(`You win round ${i}!`)
-                        contPlayer+=1;
-                    } else {
-                        console.log(`Computer wins round ${i}!`);
-                        contComputer += 1;
-                    }
-                }
-                if(contPlayer > contComputer){
-                    console.log("You win the game!")
-                } else {
-                    console.log("Computer wins the game!")
-                }
-            }
-            game();
-
+        <div class="scores">
+            <p>Score player: <span id="player">0</span></p>
+            <p>Score computer: <span id="computer">0</span></p>
+            <p>Number of ties: <span id="tie">0</span></p>
+        </div>
+        <div class="buttons">
+            <div class="intern">
+                <img id="rock" src="imgs/rock.png"></img>
+            </div>
             
-        </script>
+            <div class="intern">
+                <img id="scissors" src="imgs/scissors.png"></img>
+            </div>
+            
+            <div class="intern">
+                <img id="paper" src="imgs/paper.png"></img>
+            </div>
+            
+            
+        </div>
+        <button id="reset">Reset</button>
+        <p>The winner is whoever get's 5 points first!</p>
+        <script src="script.js"></script>
+        
     </body>
 </html>
